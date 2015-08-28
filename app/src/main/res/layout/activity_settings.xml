@@ -1,0 +1,179 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="course.labs.dailyselfie.SettingsActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notifications"
+                android:id="@+id/checkBoxNotifications"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Set First Alarm Time"
+                android:id="@+id/textStartTime"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/checkBoxNotifications"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/timeStartTime"
+                android:layout_below="@+id/textStartTime"
+                android:layout_alignParentStart="true"
+                android:padding="10dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set"
+                android:id="@+id/buttonSetStart"
+                android:layout_alignTop="@+id/timeStartTime"
+                android:layout_toEndOf="@+id/timeStartTime"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Repeat Type"
+                android:id="@+id/textViewRepeatType"
+                android:layout_below="@+id/textStartTime"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="60dp"
+                android:padding="10dp" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewRepeatType"
+                android:layout_alignParentStart="true"
+                android:orientation="vertical"
+                android:id="@+id/radioGroupRepeat">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Once Daily"
+                    android:id="@+id/radioOnceDaily"
+
+                    android:layout_marginStart="10dp" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Custom"
+                    android:id="@+id/radioCustom"
+                    android:layout_marginStart="10dp"/>
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Every"
+                android:id="@+id/textViewEvery"
+                android:layout_below="@+id/textViewRepeatType"
+                android:layout_alignParentStart="true"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editTextInterval"
+                android:layout_alignTop="@+id/textViewEvery"
+                android:layout_toEndOf="@+id/textViewEvery"
+                android:gravity="center_horizontal" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioGroupRepeat"
+                android:layout_toEndOf="@+id/editTextInterval"
+                android:orientation="horizontal"
+                android:id="@+id/radioGroupMinHr">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mins"
+                    android:id="@+id/radioMins" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hrs"
+                    android:id="@+id/radioHrs" />
+
+            </RadioGroup>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Until"
+                android:id="@+id/textViewUntil"
+                android:layout_below="@+id/editTextInterval"
+                android:layout_alignParentStart="true"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeEndTime"
+                android:layout_alignTop="@+id/textViewUntil"
+                android:layout_toEndOf="@+id/textViewUntil"
+                android:padding="10dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set"
+                android:id="@+id/buttonSetEnd"
+                android:layout_alignTop="@+id/timeEndTime"
+                android:layout_toEndOf="@+id/timeEndTime"
+
+                android:gravity="center_vertical" />
+        </RelativeLayout>
+        </ScrollView>
+
+
+
+
+
+</RelativeLayout>

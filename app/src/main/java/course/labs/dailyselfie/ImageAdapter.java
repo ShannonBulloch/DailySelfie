@@ -35,7 +35,7 @@ public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private List<String> mThumbPaths = new ArrayList<String>();
 
-    private Map<Integer, Bitmap> mThumbBmps = new HashMap<Integer, Bitmap>();
+    private Map<String, Bitmap> mThumbBmps = new HashMap<String, Bitmap>();
 
     public ImageAdapter(Context c) {
         mContext = c;
@@ -92,19 +92,18 @@ public class ImageAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        if (!mThumbBmps.containsKey(position)) {
+        if (!mThumbBmps.containsKey(mThumbPaths.get(position))) {
             Bitmap bitmap = getPic(mThumbPaths.get(position));
             if (bitmap != null) {
-                mThumbBmps.put(position, bitmap);
+                mThumbBmps.put(mThumbPaths.get(position), bitmap);
                 imageView.setImageBitmap(bitmap);
             } else {
                 // image not found or could not be decoded.
                 // Assume the image was deleted or file was renamed outside of the DailySelfie app
-                mThumbPaths.set(position, null);
                 imageView.setImageResource(R.drawable.sadpanda);
             }
         } else {
-            imageView.setImageBitmap(mThumbBmps.get(position));
+            imageView.setImageBitmap(mThumbBmps.get(mThumbPaths.get(position)));
         }
         return imageView;
     }

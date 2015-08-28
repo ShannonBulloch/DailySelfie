@@ -8,15 +8,15 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
+
+import com.ortiz.touch.TouchImageView;
 
 import java.io.IOException;
 
 
 public class ViewSelfieActivity extends Activity {
-
+    public static String TAG = "ViewSelfie";
     private String mFilePath;
 
     @Override
@@ -25,17 +25,13 @@ public class ViewSelfieActivity extends Activity {
         // Get the Intent used to start this Activity
         Intent intent = getIntent();
 
-        // Make a new ImageView
-        ImageView imageView = new ImageView(getApplicationContext());
-
         // Get the ID of the image to display and set it as the image for this ImageView
         mFilePath = intent.getStringExtra(MainActivity.EXTRA_FILE_PATH);
-        //imageView.setImageBitmap(getPic(mFilePath));
-
-        //setContentView(imageView);
 
         setContentView(R.layout.activity_view_selfie);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        TouchImageView imageView = (TouchImageView) findViewById(R.id.imageView);
+        //imageView.setPadding(0,0,0,0);
+
         Bitmap bitmap = getPic(mFilePath);
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap);
@@ -93,5 +89,6 @@ public class ViewSelfieActivity extends Activity {
         }
         return degree;
     }
+
 
 }

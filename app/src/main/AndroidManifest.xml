@@ -10,13 +10,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/nickpls_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
+            > <!--android:label="@string/title_activity_main" -->
+            <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".ViewSelfieActivity"
-            android:label="@string/title_activity_view_selfie" >
+            android:label="@string/title_activity_view_selfie">
         </activity>
 
         <receiver
@@ -32,6 +32,11 @@
             android:enabled="true"
             android:exported="true" >
         </receiver>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>
