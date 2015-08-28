@@ -316,6 +316,9 @@ public class MainActivity extends AppCompatActivity {
             mNotificationReceiverPendingIntent = PendingIntent.getBroadcast(
                     MainActivity.this, 0, mNotificationReceiverIntent, 0);
 
+            // cancel any previously set up alarms
+            cancelAlarms();
+
             if (alarmInterval == 0) {
                 // no repeat.  set one time alarm
                 mAlarmManager.set(AlarmManager.RTC_WAKEUP, initialAlarmTime, mNotificationReceiverPendingIntent);
