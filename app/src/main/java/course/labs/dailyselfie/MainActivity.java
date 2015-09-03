@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_FILE_PATH = "PATH";
     public static final String EXTRA_NOTIFICATION_SETTINGS = "NOTIFICATION_SETTINGS";
     public static final String PHOTO_DIR = "Selfies";
+    public static final String STATE_PHOTO_PATH = "lastPhotoPath";
 
     public static final int REQUEST_SETTINGS = 2;
 
@@ -72,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState != null) {
+            mCurrentPhotoPath = savedInstanceState.getString(STATE_PHOTO_PATH);
+        }
 
         setTitle(getResources().getString(R.string.title_activity_main));
 
@@ -107,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
         mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         setUpNotifications();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the current photo path
+        savedInstanceState.putString(STATE_PHOTO_PATH, mCurrentPhotoPath);
+
+        // Call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -468,11 +482,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
+        if (mCurrentPhotoPath != null) {
+            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            File f = new File(mCurrentPhotoPath);
+            Uri contentUri = Uri.fromFile(f);
+            mediaScanIntent.setData(contentUri);
+            this.sendBroadcast(mediaScanIntent);
+        }
     }
 
 }

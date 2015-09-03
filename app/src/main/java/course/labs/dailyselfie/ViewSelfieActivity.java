@@ -81,7 +81,7 @@ public class ViewSelfieActivity extends Activity {
                         break;
                     case ExifInterface.ORIENTATION_UNDEFINED:
                         // on my emulator, the orientation is undefined, but is actually rotated 90
-                        degree = 90;
+                        degree = 0;
                         break;
                 }
 
